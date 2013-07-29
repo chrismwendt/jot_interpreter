@@ -1,0 +1,53 @@
+Questions about the complexity of computers
+    Why are computers 32/64 bit?
+        Word size usually determines how much memory the processor can address, and in turn access
+    Why does 1 byte = 8 bits?
+        7 bits (128 values) can hold both cases of the English alphabet, punctuation, and other characters
+        8 is a power of 2, 8th bit used for parity (error detection)
+        Historical artifact
+    Why are RAM and hard drives separate?
+        Hybrid of fast read/write and capacity
+    Why are there so many ways for a program to get input (e.g. standard in, command-line arguments, environment variables, files)?
+        Convenience
+            Command-line arguments can be changed more easily than an input file
+        Different sources have different advantages and disadvantages or features
+    Why are there so many programming languages?
+        Tradeoffs between speed, readability, source length, supported platforms
+
+Why spend so much time learning lambda calculus?
+    Curiosity
+    I wanted to find the simplest programming language
+        The fewest language features and allowed symbols while remaining Turing Complete
+    I was hoping there would be some "Aha!" moments in which would put other programming languages into a different perspective.
+    
+
+f is the name of a function
+f(3) is an application, 3 is the argument of the application
+f(x)=... is an abstraction, x is a parameter and ... is the function body which might contain x
+
+successor(x) = x+1
+successor is the name of a function which accepts one argument and returns the argument incremented by 1
+
+plus(x, y) = x+y
+plus is the name of a function which accepts two arguments and returns the sum of the two arguments
+
+Some functions:
+Identity    f(x) = x
+Double      f(x) = 2x
+Add three   f(x) = x+3
+Square      f(x) = x^2
+Multiply    f(x, y) = xy
+Composition f(x, y) = x(y), where x is a function
+...         f(x, y) = (x(y))(y)(3), where x and y are functions
+
+Lambda calculus looks like this:
+(^x.x) Identity
+
+I ^1
+K ^^2
+S ^^^``31`21
+
+Jot
+'' -> (\a.a)
+'0' -> (a b)
+'1' -> S K
