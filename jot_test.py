@@ -1,4 +1,4 @@
-import py_lambda
+import jot
 import unittest
 import pyparsing
 from time import time
@@ -21,7 +21,7 @@ class Unit(unittest.TestCase):
         cases = [{'input': c[0], 'output': c[1]} for c in cases]
 
         for case in cases:
-            self.assertEqual(str(py_lambda.Expression.fromJot(case['input'])), case['output'], msg=case['input'])
+            self.assertEqual(str(jot.Expression.fromJot(case['input'])), case['output'], msg=case['input'])
 	
     def testToBinary(self):
         cases = [
@@ -33,7 +33,7 @@ class Unit(unittest.TestCase):
         cases = [{'input': c[0], 'output': c[1]} for c in cases]
 
         for case in cases:
-            self.assertEqual(py_lambda.Expression.fromLambda(case['input']).toBinary(), case['output'], msg=case['input'])
+            self.assertEqual(jot.Expression.fromLambda(case['input']).toBinary(), case['output'], msg=case['input'])
 
     def testDecodeEncodeEquality(self):
         cases = [
@@ -52,7 +52,7 @@ class Unit(unittest.TestCase):
         ]
 
         for case in cases:
-            self.assertEqual(str(py_lambda.Expression.fromLambda(case)), case)
+            self.assertEqual(str(jot.Expression.fromLambda(case)), case)
 
     def testTrueNegatives(self):
         cases = [
@@ -66,7 +66,7 @@ class Unit(unittest.TestCase):
         ]
 
         for case in cases:
-            self.assertRaises(Exception, lambda: py_lambda.Expression.fromLambda(case))
+            self.assertRaises(Exception, lambda: jot.Expression.fromLambda(case))
 
     def testNormalized(self):
         casesIrreducible = [
@@ -141,7 +141,7 @@ class Unit(unittest.TestCase):
         cases = [{'input': c[0], 'output': c[1]} for c in cases]
 
         for case in cases:
-            self.assertEqual(str(py_lambda.Expression.fromLambda(case['input']).normalized()), case['output'], msg='input was {}'.format(case['input']))
+            self.assertEqual(str(jot.Expression.fromLambda(case['input']).normalized()), case['output'], msg='input was {}'.format(case['input']))
 
     def testNaturalToBinary(self):
         cases = [
@@ -161,7 +161,7 @@ class Unit(unittest.TestCase):
         cases = [{'input': c[0], 'output': c[1]} for c in cases]
         
         for case in cases:
-            self.assertEqual(py_lambda.naturalToBinary(case['input']), case['output'])
+            self.assertEqual(jot.naturalToBinary(case['input']), case['output'])
 
     def testBinaryToNatural(self):
         cases = [
@@ -181,7 +181,7 @@ class Unit(unittest.TestCase):
         cases = [{'input': c[0], 'output': c[1]} for c in cases]
         
         for case in cases:
-            self.assertEqual(py_lambda.binaryToNatural(case['input']), case['output'])
+            self.assertEqual(jot.binaryToNatural(case['input']), case['output'])
 
 def main():
     unittest.main()
