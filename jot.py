@@ -1,10 +1,9 @@
 # TODO 0-based indices
-# TODO put on Github
 
 # Jot
-# '' -> (\a.a)
-# '0' -> (a b)
-# '1' -> S K
+# '' -> I
+# '0' -> `ab
+# '1' -> SK
 
 from pyparsing import *
 import copy
