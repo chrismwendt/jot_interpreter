@@ -24,9 +24,6 @@ The normalized lambda expression is then encoded in binary:
 
 `01000000100000110`
 
-## TODO
-- Contemplate a way to output any bit string, not just the encodings of normalized lambda expressions
-
 ## Sources
 - http://semarch.linguistics.fas.nyu.edu/barker/Iota/
 - http://jwodder.freeshell.org/lambda.html

@@ -63,7 +63,7 @@ class Expression:
             if s[0] == '1':
                 has = Application(Application(has, S()), K())
             else:
-                has = Abstraction(Abstraction(Application(has, Application(Variable(2), Variable(1)))))
+                has = Application(Application(S(), K()), has)
             s = s[1:]
         return has
 
