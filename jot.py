@@ -12,7 +12,7 @@ import sys
 def main():
     while True:
         try:
-            string = raw_input().rstrip()
+            string = input().rstrip()
         except:
             break
         debug = False
@@ -27,16 +27,16 @@ def main():
         else:
             expression = Expression.fromJot(string)
         if debug:
-            print 'input     ', string
+            print('input     ', string)
             if not lambda_:
-                print 'lambda    ', expression
+                print('lambda    ', expression)
         expression.normalized()
         if debug:
-            print 'normalized', expression.normalized()
-            print 'output    ', expression.toBinary()
+            print('normalized', expression.normalized())
+            print('output    ', expression.toBinary())
         else:
-            print expression.toBinary()
-        print
+            print(expression.toBinary())
+        print()
 
 def jot(program):
     return Expression.fromJot(program).normalized().toBinary()
@@ -49,7 +49,7 @@ class Expression:
         abstraction = (l('^')+term).setParseAction(lambda t: Abstraction(*t))
         application = (l('`')+term+term).setParseAction(lambda t: Application(*t))
         index = (Regex('[1-9]') | l('(')+Regex('[1-9][0-9]+')+l(')')).setParseAction(lambda t: Variable(int(*t)))
-        term << (abstraction | application | index)
+        term <<= (abstraction | application | index)
         expression = term + StringEnd()
         return expression.parseString(s).asList()[0]
     @staticmethod
@@ -92,7 +92,7 @@ class Abstraction(Expression):
         if (isinstance(self.body, Application) and
         isinstance(self.body.argument, Variable) and
         self.body.argument.value == 1 and
-        not self.body.function.getVariables(offset=0, memo={}).has_key(1)):
+        1 not in self.body.function.getVariables(offset=0, memo={})):
             shiftExternals(self.body.function, -1)
             return self.body.function
         return self
@@ -146,7 +146,7 @@ class Application(Expression):
         return '01{}{}'.format(self.function.toBinary(), self.argument.toBinary())
 
 def shiftExternals(expression, delta):
-    external_lists = [_list for offset, _list in expression.getVariables(offset=0, memo={}).iteritems() if offset > 0]
+    external_lists = [_list for offset, _list in expression.getVariables(offset=0, memo={}).items() if offset > 0]
     for e in [item for sublist in external_lists for item in sublist]:
         e.value += delta
 
