@@ -24,6 +24,14 @@ The normalized lambda expression is then encoded in binary:
 
 `01000000100000110`
 
+## TODO
+- Consider implementing combinatory logic using trit strings, then attempt to find a one-point combinator which does not apply any arguments to an abstraction.
+    - ```Sxyz -> ``xz`yz
+    - ``Kxy -> x
+    - Or use only the application operator ` and a one-point combinator X
+    - Output is the normal form of the input CL expression
+    - Every irreducible input is a quine
+
 ## Sources
 - http://semarch.linguistics.fas.nyu.edu/barker/Iota/
 - http://jwodder.freeshell.org/lambda.html
